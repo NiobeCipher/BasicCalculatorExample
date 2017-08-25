@@ -78,15 +78,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private Float calculate(int op_type) {
-        number1 = Float.parseFloat(mNum1.getEditText().getText().toString());
-        number2 = Float.parseFloat(mNum2.getEditText().getText().toString());
+    private String calculate(int op_type) {
+        String num_1 = mNum1.getEditText().getText().toString();
+        String num_2 = mNum2.getEditText().getText().toString();
+        if (num_1.isEmpty() | num_2.isEmpty()) {
+            return "Invalid operation";
+        } else {
+            number1 = Float.parseFloat(num_1);
+            number2 = Float.parseFloat(num_2);
+        }
         switch (op_type){
-            case 0: return number1 + number2;
-            case 1: return number1 - number2;
-            case 2: return number1 * number2;
-            case 3: return number1 / number2;
-            default: return Float.valueOf(0);
+            case 0:
+                return String.valueOf(number1 + number2);
+            case 1:
+                return String.valueOf(number1 - number2);
+            case 2:
+                return String.valueOf(number1 * number2);
+            case 3:
+                return String.valueOf(number1 / number2);
+            default:
+                return "Invalid";
         }
     }
 }
