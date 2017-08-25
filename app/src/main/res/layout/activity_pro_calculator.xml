@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.jettcalder.basiccalculatorexample.ProCalculatorActivity">
+
+        <TextView
+            android:id="@+id/pro_tv_top"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:background="@color/cardview_light_background"
+            android:maxLines="1"
+            android:paddingEnd="8dp"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pro_tv_mid"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:background="@color/cardview_light_background"
+            android:maxLines="1"
+            android:paddingEnd="8dp"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pro_tv_top" />
+
+        <TextView
+            android:id="@+id/pro_tv_bottom"
+            android:layout_width="0dp"
+            android:layout_height="72dp"
+            android:background="@color/cardview_light_background"
+            android:maxLines="1"
+            android:paddingEnd="8dp"
+            android:textAlignment="textEnd"
+            android:textColor="@android:color/black"
+            android:textSize="42sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pro_tv_mid" />
+
+        <GridLayout
+            android:id="@+id/pro_keypad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignBounds"
+            android:background="@drawable/grid_bg"
+            android:columnCount="4"
+            android:columnOrderPreserved="true"
+            android:rowCount="5"
+            android:useDefaultMargins="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pro_tv_bottom"
+            app:layout_constraintVertical_bias="0.0">
+
+            <Button
+                android:id="@+id/pro_btn_ac"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/ac_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_neg"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/neg_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_percent"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/percent_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_div"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/div_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_7"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_7"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_8"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_8"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_9"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_9"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_mul"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/mul_sign"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_4"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_4"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_5"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_5"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_6"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_6"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_minus"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/minus_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_1"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_1"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_2"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_2"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_3"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_3"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_plus"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/plus_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_0"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="230dp"
+                android:layout_height="115dp"
+                android:layout_columnSpan="2"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/_0"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_dot"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/dot_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/pro_btn_equal"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="115dp"
+                android:layout_height="115dp"
+                android:layout_margin="0dp"
+                android:background="@drawable/btn_bg"
+                android:text="@string/equal_sign"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+        </GridLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

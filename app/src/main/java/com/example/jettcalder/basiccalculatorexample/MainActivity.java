@@ -1,5 +1,6 @@
 package com.example.jettcalder.basiccalculatorexample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mDivBtn;
     private Button mMulBtn;
     private Button mResetBtn;
+    private Button mGoProBtn;
     private TextView mResult;
 //    variables
     private Float number1;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mMulBtn = (Button) findViewById(R.id.primary_mul_btn);
         mDivBtn = (Button) findViewById(R.id.primary_div_btn);
         mResetBtn = (Button) findViewById(R.id.primary_reset_btn);
+        mGoProBtn = (Button) findViewById(R.id.primary_go_pro_btn);
         mResult = (TextView) findViewById(R.id.primary_result_tv);
 
 //        Actions
@@ -73,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
                 mNum1.getEditText().setText("");
                 mNum2.getEditText().setText("");
                 mResult.setText("Result: ");
+            }
+        });
+
+        mGoProBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ProCalculatorActivity.class));
             }
         });
 
