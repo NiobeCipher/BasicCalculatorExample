@@ -15,14 +15,12 @@ public class ProCalculatorActivity extends AppCompatActivity {
     private static final char SUBTRACTION = '-';
     private static final char MULTIPLICATION = '*';
     private static final char DIVISION = '/';
-
+    KhmerNumber khmerNumber = new KhmerNumber();
     private char CURRENT_ACTION;
-
     private double valueOne = Double.NaN;
     private double valueTwo = Double.NaN;
     private String history = "";
     private String lastResult = "";
-
     private ActivityProCalculatorBinding binding;
 
     @Override
@@ -139,13 +137,13 @@ public class ProCalculatorActivity extends AppCompatActivity {
                 computeCalculation();
                 if (!Double.isNaN(valueOne)) {
                     if (Double.isNaN(valueTwo)) {
-                        binding.proTvTop.setText((String.format("%s", valueOne)));
+                        binding.proTvTop.setText((String.format("%s", khmerNumber.parseKhNumber(valueOne))));
                         binding.proTvMid.setText(null);
                         valueOne = Double.NaN;
                         CURRENT_ACTION = '0';
                     } else {
-                        binding.proTvTop.setText(String.format("%s = %s", history + valueTwo, valueOne));
-                        lastResult = String.format("%s = %s", history + valueTwo, valueOne);
+                        binding.proTvTop.setText(String.format("%s = %s", history + khmerNumber.parseKhNumber(valueTwo), khmerNumber.parseKhNumber(valueOne)));
+                        lastResult = String.format("%s = %s", history + khmerNumber.parseKhNumber(valueTwo), khmerNumber.parseKhNumber(valueOne));
                         valueOne = Double.NaN;
                         CURRENT_ACTION = '0';
                         binding.proTvMid.setText(null);
@@ -164,6 +162,13 @@ public class ProCalculatorActivity extends AppCompatActivity {
                 reset();
             }
         });
+        binding.proBtnDot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.proTvBottom.setText(String.format("%s%s", binding.proTvBottom.getText(), "."));
+            }
+        });
+//        TODO: 3.3 * 3 bug
     }
 
     private void reset() {
@@ -180,30 +185,30 @@ public class ProCalculatorActivity extends AppCompatActivity {
     private void updateVal(String s) {
         if (!Double.isNaN(valueTwo)) {
             if (history.isEmpty()) {
-                binding.proTvTop.setText(String.format("%s", valueOne));
+                binding.proTvTop.setText(String.format("%s", khmerNumber.parseKhNumber(valueOne)));
             } else {
-                binding.proTvTop.setText(String.format("%s%s = %s", history, valueTwo, valueOne));
+                binding.proTvTop.setText(String.format("%s%s = %s", history, khmerNumber.parseKhNumber(valueTwo), khmerNumber.parseKhNumber(valueOne)));
             }
             binding.proTvMid.setText(String.format("%s", s));
-            history = String.format("%s %s ", valueOne, s);
+            history = String.format("%s %s ", khmerNumber.parseKhNumber(valueOne), s);
             binding.proTvBottom.setText(null);
         } else {
-            binding.proTvTop.setText(String.format("%s", valueOne));
+            binding.proTvTop.setText(String.format("%s", khmerNumber.parseKhNumber(valueOne)));
             binding.proTvMid.setText(String.format("%s", s));
-            history = String.format("%s %s ", valueOne, s);
+            history = String.format("%s %s ", khmerNumber.parseKhNumber(valueOne), s);
             binding.proTvBottom.setText(null);
         }
     }
 
     private void appendNum(int i) {
-        binding.proTvBottom.setText(String.format("%s%s", binding.proTvBottom.getText(), i));
+        binding.proTvBottom.setText(String.format("%s%s", binding.proTvBottom.getText(), khmerNumber.getKhNum(i)));
     }
 
     private void computeCalculation() {
         if (!Double.isNaN(valueOne)) {
             String temp = binding.proTvBottom.getText().toString();
             if (!temp.isEmpty()) {
-                valueTwo = Double.parseDouble(binding.proTvBottom.getText().toString());
+                valueTwo = Double.parseDouble(khmerNumber.parseEnNumber(binding.proTvBottom.getText().toString()));
                 binding.proTvBottom.setText(null);
 
                 if (CURRENT_ACTION == ADDITION)
@@ -219,7 +224,7 @@ public class ProCalculatorActivity extends AppCompatActivity {
             }
         } else {
             try {
-                valueOne = Double.parseDouble(binding.proTvBottom.getText().toString());
+                valueOne = Double.parseDouble(khmerNumber.parseEnNumber(binding.proTvBottom.getText().toString()));
             } catch (Exception e) {
             }
         }
