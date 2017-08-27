@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.jettcalder.basiccalculatorexample.databinding.ActivityProCalculatorBinding;
 
@@ -34,6 +35,7 @@ public class ProCalculatorActivity extends AppCompatActivity {
         config.setLocale(locale);
         this.getResources().updateConfiguration(config, this.getResources().getDisplayMetrics());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_pro_calculator);
+
 
 
         binding.proBtn0.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +179,7 @@ public class ProCalculatorActivity extends AppCompatActivity {
     private void reset() {
         valueOne = Double.NaN;
         valueTwo = Double.NaN;
+        backup_val = Double.NaN;
         CURRENT_ACTION = '0';
         binding.proTvTop.setText("");
         binding.proTvMid.setText("");
@@ -212,14 +215,18 @@ public class ProCalculatorActivity extends AppCompatActivity {
             String temp = binding.proTvBottom.getText().toString();
             if (!temp.isEmpty()) {
                 valueTwo = Double.parseDouble(khmerNumber.parseEnNumber(binding.proTvBottom.getText().toString()));
+                Toast.makeText(ProCalculatorActivity.this, String.valueOf(valueTwo), Toast.LENGTH_LONG).show();
                 binding.proTvBottom.setText(null);
 
                 if (CURRENT_ACTION == ADDITION)
                     valueOne = this.valueOne + valueTwo;
                 else if (CURRENT_ACTION == SUBTRACTION)
                     valueOne = this.valueOne - valueTwo;
-                else if (CURRENT_ACTION == MULTIPLICATION)
+                else if (CURRENT_ACTION == MULTIPLICATION) {
                     valueOne = this.valueOne * valueTwo;
+//                    valueOne = Double.parseDouble(new DecimalFormat("#.##").format(valueOne));
+//                    Toast.makeText(ProCalculatorActivity.this, String.valueOf(new DecimalFormat("#.##").format(valueOne)), Toast.LENGTH_LONG).show();
+                }
                 else if (CURRENT_ACTION == DIVISION)
                     valueOne = this.valueOne / valueTwo;
             } else {
@@ -231,6 +238,7 @@ public class ProCalculatorActivity extends AppCompatActivity {
                     valueOne = backup_val;
                 } else {
                     valueOne = Double.parseDouble(khmerNumber.parseEnNumber(binding.proTvBottom.getText().toString()));
+                    Toast.makeText(ProCalculatorActivity.this, String.valueOf(valueOne), Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
             }

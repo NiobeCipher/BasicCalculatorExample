@@ -19,7 +19,9 @@
         <activity
             android:name=".ProCalculatorActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.NoActionBar"></activity>
+            android:theme="@style/Theme.Design.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
