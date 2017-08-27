@@ -19,6 +19,7 @@ public class ProCalculatorActivity extends AppCompatActivity {
     private char CURRENT_ACTION;
     private double valueOne = Double.NaN;
     private double valueTwo = Double.NaN;
+    private double backup_val = Double.NaN;
     private String history = "";
     private String lastResult = "";
     private ActivityProCalculatorBinding binding;
@@ -139,11 +140,13 @@ public class ProCalculatorActivity extends AppCompatActivity {
                     if (Double.isNaN(valueTwo)) {
                         binding.proTvTop.setText((String.format("%s", khmerNumber.parseKhNumber(valueOne))));
                         binding.proTvMid.setText(null);
+                        backup_val = valueOne;
                         valueOne = Double.NaN;
                         CURRENT_ACTION = '0';
                     } else {
                         binding.proTvTop.setText(String.format("%s = %s", history + khmerNumber.parseKhNumber(valueTwo), khmerNumber.parseKhNumber(valueOne)));
                         lastResult = String.format("%s = %s", history + khmerNumber.parseKhNumber(valueTwo), khmerNumber.parseKhNumber(valueOne));
+                        backup_val = valueOne;
                         valueOne = Double.NaN;
                         CURRENT_ACTION = '0';
                         binding.proTvMid.setText(null);
@@ -224,7 +227,11 @@ public class ProCalculatorActivity extends AppCompatActivity {
             }
         } else {
             try {
-                valueOne = Double.parseDouble(khmerNumber.parseEnNumber(binding.proTvBottom.getText().toString()));
+                if (!Double.isNaN(backup_val)) {
+                    valueOne = backup_val;
+                } else {
+                    valueOne = Double.parseDouble(khmerNumber.parseEnNumber(binding.proTvBottom.getText().toString()));
+                }
             } catch (Exception e) {
             }
         }
